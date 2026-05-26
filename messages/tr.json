@@ -1,0 +1,452 @@
+{
+  "genel": {
+    "logo": "RENTCNCMACHINE",
+    "logoCnc": "CNC",
+    "girisYap": "Giriş Yap",
+    "cikisYap": "Çıkış Yap →",
+    "ucretsizKayit": "Ücretsiz Kayıt",
+    "kaydet": "Kaydet",
+    "devamEt": "Devam Et",
+    "geri": "Geri",
+    "iptal": "İptal",
+    "yükleniyor": "Yükleniyor…",
+    "faz2": "Faz 2",
+    "faz2Aktif": "Faz 2'de aktif"
+  },
+
+  "nav": {
+    "fabrikaBul": "Fabrika Bul",
+    "kapasiteListele": "Kapasite Listele",
+    "nasilCalisir": "Nasıl Çalışır",
+    "fiyatlar": "Fiyatlar"
+  },
+
+  "anaSayfa": {
+    "eyebrow": "CNC Kapasite Pazaryeri",
+    "heroBaslik": "Türkiye'nin CNC kapasitesini dünyaya açıyoruz",
+    "heroBaslikVurgu": "dünyaya açıyoruz",
+    "heroAlt": "Atıl CNC kapasitesi olan fasoncu firmalar ile dünyanın dört bir yanından iş arayan alıcıları güvenli ve hızlı şekilde buluşturuyoruz.",
+    "heroCta1": "Kapasitemi Listele",
+    "heroCta2": "CNC Fabrika Bul",
+
+    "istatistik": {
+      "fasoncuSayisi": "Kayıtlı Fasoncu",
+      "aliciSayisi": "Aktif Alıcı",
+      "tezgahSayisi": "Kayıtlı Tezgah",
+      "ulkeSayisi": "Ülke"
+    },
+
+    "fasoncu": {
+      "eyebrow": "Fasoncu Firma",
+      "baslik": "Atıl CNC kapasitenizi gelire dönüştürün",
+      "aciklama": "Tezgahlarınız boş dururken Almanya'dan, İtalya'dan, Japonya'dan alıcılar sizi arıyor.",
+      "adim1": "Tezgah parkurunu ve sertifikaları 15 dakikada girin",
+      "adim2": "Global alıcılardan RFQ talepleri alın",
+      "adim3": "Platform üzerinden görüşün, anlaşın, işi alın",
+      "cta": "30 gün ücretsiz dene"
+    },
+
+    "alici": {
+      "eyebrow": "Alıcı Firma",
+      "baslik": "Türkiye'nin en iyi CNC fabrikalarına ulaşın",
+      "aciklama": "ISO sertifikalı, 5 eksen kabiliyetli fasoncu firmalar — detaylı profiller ve gerçek değerlendirmelerle.",
+      "adim1": "Tezgah tipi, malzeme, sertifika ile filtreleyin",
+      "adim2": "Profilleri inceleyin, RFQ gönderin",
+      "adim3": "Platform üzerinden iletişim — ücretsiz",
+      "cta": "Ücretsiz ara"
+    },
+
+    "nasilCalisir": {
+      "eyebrow": "Süreç",
+      "baslik": "Nasıl çalışır?",
+      "adim1Baslik": "Kayıt & Profil",
+      "adim1Aciklama": "Firma ve tezgah bilgilerini gir",
+      "adim2Baslik": "Eşleşme",
+      "adim2Aciklama": "Alıcı arar, uygun firmalar sıralanır",
+      "adim3Baslik": "İletişim",
+      "adim3Aciklama": "Güvenli mesajlaşma ve RFQ süreci",
+      "adim4Baslik": "İş",
+      "adim4Aciklama": "Üretim ve teslimat dışarıda yürür"
+    },
+
+    "kategoriler": {
+      "eyebrow": "Tezgah Kategorileri",
+      "baslik": "Tüm CNC kategorileri",
+      "liste": [
+        "CNC Freze (3–5 Eksen)",
+        "CNC Torna",
+        "5 Eksen İşleme",
+        "Tel Erozyon (EDM)",
+        "Dalma Erozyon",
+        "Kayar Otomat",
+        "Silindirik Taşlama",
+        "Yüzey Taşlama",
+        "Fiber Lazer Kesim",
+        "CNC Abkant",
+        "Turn-Mill",
+        "Gantry Freze",
+        "Koordinat Taşlama",
+        "Honlama"
+      ]
+    },
+
+    "guven": {
+      "eyebrow": "Neden Biz",
+      "baslik": "Platform güvencesi",
+      "maddeler": [
+        {
+          "baslik": "Doğrulanmış profiller",
+          "aciklama": "ISO 9001, IATF 16949, AS9100 sertifikaları doğrulanır"
+        },
+        {
+          "baslik": "Güvenli iletişim",
+          "aciklama": "İletişim bilgileri anlaşmaya kadar gizli tutulur"
+        },
+        {
+          "baslik": "Çok dilli destek",
+          "aciklama": "TR, EN, DE, FR, IT, ES — otomatik çeviri"
+        },
+        {
+          "baslik": "Teknik filtreler",
+          "aciklama": "Tezgah tipi, eksen, boyut, malzeme, sertifika, şehir"
+        },
+        {
+          "baslik": "Gerçek değerlendirmeler",
+          "aciklama": "Tamamlanan her iş sonrası alıcı puanı ve yorumu"
+        },
+        {
+          "baslik": "Alıcıya ücretsiz",
+          "aciklama": "Arama ve iletişim alıcılar için tamamen ücretsiz"
+        }
+      ]
+    },
+
+    "ulkeler": {
+      "eyebrow": "Global Erişim",
+      "baslik": "Alıcı ülkeler",
+      "liste": [
+        "Almanya", "İtalya", "Fransa", "İngiltere", "ABD", "Hollanda",
+        "İsveç", "Japonya", "Kore", "İsviçre", "Avusturya", "Belçika"
+      ]
+    },
+
+    "footerCta": {
+      "eyebrow": "Hemen Başlayın",
+      "baslik": "İlk 30 gün tamamen ücretsiz",
+      "aciklama": "Fasoncu iseniz kapasitenizi listeleyin ve global alıcılara görünür olun. Alıcıysanız Türkiye'nin en iyi CNC fabrikalarını ücretsiz arayın.",
+      "cta1": "Fasoncu Kaydı",
+      "cta2": "Alıcı Girişi"
+    },
+
+    "footer": {
+      "kvkk": "KVKK",
+      "gizlilik": "Gizlilik",
+      "iletisim": "İletişim",
+      "telif": "© 2025"
+    }
+  },
+
+  "giris": {
+    "baslik": "Giriş Yap",
+    "altBaslik": "Hesabınıza erişin",
+    "emailLabel": "E-posta",
+    "emailPlaceholder": "ornek@firma.com",
+    "sifreLabel": "Şifre",
+    "sifrePlaceholder": "••••••••",
+    "girBtn": "Giriş Yap",
+    "sifreUnuttum": "Şifremi Unuttum",
+    "hesapYok": "Hesabınız yok mu?",
+    "kayitOl": "Kayıt Ol",
+    "fasoncuKayit": "Fasoncu Kaydı",
+    "aliciKayit": "Alıcı Kaydı",
+    "hataMesaji": "E-posta veya şifre hatalı. Lütfen tekrar deneyin."
+  },
+
+  "sifreSifirla": {
+    "baslik": "Şifre Sıfırlama",
+    "adim1Baslik": "Şifrenizi sıfırlayın",
+    "adim1Alt": "Kayıtlı e-posta adresinizi girin. Şifre sıfırlama bağlantısı göndereceğiz.",
+    "emailLabel": "E-posta Adresi",
+    "emailPlaceholder": "ornek@firma.com",
+    "gonderbtn": "Bağlantı Gönder",
+    "adim2Baslik": "E-postanızı kontrol edin",
+    "adim2Alt": "Şifre sıfırlama bağlantısı gönderildi.",
+    "adim2Ipucu1": "Spam klasörünü kontrol edin",
+    "adim2Ipucu2": "Bağlantı 24 saat geçerlidir",
+    "adim2Ipucu3": "Bağlantıya tıklayarak yeni şifrenizi belirleyin",
+    "giriseDon": "Giriş sayfasına dön"
+  },
+
+  "yeniSifre": {
+    "baslik": "Yeni Şifre Belirle",
+    "adim3Baslik": "Yeni şifrenizi belirleyin",
+    "adim3Alt": "En az 8 karakter, güçlü bir şifre seçin.",
+    "yeniSifreLabel": "Yeni Şifre",
+    "yeniSifrePlaceholder": "En az 8 karakter",
+    "tekrarLabel": "Şifre Tekrar",
+    "tekrarPlaceholder": "Şifrenizi tekrar girin",
+    "guncelleBtm": "Şifreyi Güncelle",
+    "gucZayif": "Zayıf",
+    "gucOrta": "Orta",
+    "gucGuclu": "Güçlü",
+    "adim4Baslik": "Şifreniz güncellendi",
+    "adim4Alt": "Yeni şifrenizle giriş yapabilirsiniz.",
+    "girisYap": "Giriş Yap",
+    "guvenlikIpucu": "Şifrenizi kimseyle paylaşmayın."
+  },
+
+  "fasoncuKayit": {
+    "baslik": "Fasoncu Kaydı",
+    "altBaslik": "Kapasitenizi global alıcılara açın",
+    "adimlar": [
+      "Firma Bilgileri",
+      "Konum & İletişim",
+      "Firma Profili",
+      "Tezgah Parkı",
+      "Sertifikalar",
+      "Hesap Bilgileri",
+      "Plan Seçimi"
+    ],
+    "firma": {
+      "vknLabel": "Vergi Kimlik Numarası (VKN)",
+      "vknPlaceholder": "10 haneli vergi no",
+      "unvanLabel": "Ticari Ünvan",
+      "unvanPlaceholder": "Şirket adı (ticaret siciline göre)"
+    },
+    "konum": {
+      "ilLabel": "İl",
+      "ilPlaceholder": "Seçin",
+      "ilceLabel": "İlçe",
+      "ilcePlaceholder": "Seçin",
+      "adresLabel": "Adres",
+      "adresPlaceholder": "Açık adres"
+    },
+    "iletisim": {
+      "yetkiliLabel": "Yetkili Kişi",
+      "yetkiliPlaceholder": "Ad Soyad",
+      "telefonLabel": "Telefon",
+      "telefonPlaceholder": "+90 5XX XXX XX XX",
+      "websiteLabel": "Website",
+      "websitePlaceholder": "https://firmaniz.com (opsiyonel)"
+    },
+    "profil": {
+      "kurulisLabel": "Kuruluş Yılı",
+      "calisanLabel": "Çalışan Sayısı",
+      "tanitimLabel": "Kısa Tanıtım",
+      "tanitimPlaceholder": "Firmanızı kısaca tanıtın (opsiyonel, maks. 500 karakter)"
+    },
+    "hesap": {
+      "emailLabel": "E-posta",
+      "emailPlaceholder": "firma@email.com",
+      "sifreLabel": "Şifre",
+      "sifrePlaceholder": "En az 8 karakter",
+      "tekrarLabel": "Şifre Tekrar",
+      "tekrarPlaceholder": "Şifrenizi tekrar girin"
+    },
+    "plan": {
+      "ucretsizAd": "Ücretsiz",
+      "premiumAd": "Premium",
+      "proAd": "Pro",
+      "secBtn": "Bu Planla Devam Et",
+      "mevcut": "Mevcut Plan"
+    },
+    "tamamla": "Kaydı Tamamla",
+    "girisLinki": "Zaten hesabınız var mı? Giriş yapın"
+  },
+
+  "aliciKayit": {
+    "baslik": "Alıcı Kaydı",
+    "altBaslik": "Türkiye'nin CNC kapasitesine erişin",
+    "firma": {
+      "baslik": "Firma Bilgileri",
+      "firmaAdiLabel": "Firma Adı",
+      "firmaAdiPlaceholder": "Şirket adı",
+      "sektorLabel": "Sektör",
+      "ulkeLabel": "Ülke",
+      "vatLabel": "VAT / Vergi No",
+      "vatPlaceholder": "Opsiyonel",
+      "websiteLabel": "Website",
+      "websitePlaceholder": "https://firmaniz.com (opsiyonel)",
+      "calisanLabel": "Çalışan Sayısı"
+    },
+    "iletisim": {
+      "baslik": "İletişim & Hesap",
+      "adLabel": "Ad",
+      "adPlaceholder": "Adınız",
+      "soyadLabel": "Soyad",
+      "soyadPlaceholder": "Soyadınız",
+      "pozisyonLabel": "Pozisyon / Unvan",
+      "pozisyonPlaceholder": "Satın alma müdürü, mühendis… (opsiyonel)",
+      "emailLabel": "E-posta",
+      "emailPlaceholder": "is@email.com",
+      "telefonLabel": "Telefon",
+      "telefonPlaceholder": "+49 XXX XXX XX XX (opsiyonel)",
+      "sifreLabel": "Şifre",
+      "sifrePlaceholder": "En az 8 karakter",
+      "dilLabel": "Tercih Ettiğiniz Dil"
+    },
+    "is": {
+      "baslik": "Aradığınız İş",
+      "aciliyetLabel": "İş Aciliyeti",
+      "aciliyetAcil": "Acil (1–2 hafta)",
+      "aciliyetUcAy": "3 ay içinde",
+      "aciliyetArastirma": "Araştırma aşamasında",
+      "aciliyetSurekli": "Sürekli tedarik",
+      "tezgahLabel": "Aradığınız Tezgah Tipleri",
+      "malzemeLabel": "Aradığınız Malzemeler",
+      "sertifikaLabel": "Beklenen Sertifikalar",
+      "hacimLabel": "Yıllık İş Hacmi (USD)",
+      "notlarLabel": "Notlar",
+      "notlarPlaceholder": "Özel gereksinimler, teknik notlar… (opsiyonel)"
+    },
+    "yasal": {
+      "baslik": "Yasal Onaylar",
+      "kvkk": "KVKK kapsamında kişisel verilerimin işlenmesine onay veriyorum.",
+      "kosullar": "Kullanım koşullarını ve gizlilik politikasını okudum, kabul ediyorum.",
+      "bulten": "Kampanya ve yeni özellik bilgilendirmelerini almak istiyorum. (opsiyonel)"
+    },
+    "kayitBtn": "Hesap Oluştur",
+    "girisLinki": "Zaten hesabınız var mı? Giriş yapın"
+  },
+
+  "dogrulama": {
+    "baslik": "E-postanızı Doğrulayın",
+    "aciklama": "Kayıt e-postanıza doğrulama bağlantısı gönderdik. Lütfen e-postanızı kontrol edin ve bağlantıya tıklayın.",
+    "spamNotu": "E-posta gelmezse spam klasörünü kontrol edin.",
+    "giriseDon": "Giriş Sayfasına Dön"
+  },
+
+  "fasoncuPanel": {
+    "baslik": "Firma Paneli",
+    "hosgeldin": "Hoş geldiniz! 👋",
+    "hosgeldinAlt": "Profilinizi tamamlayın ve alıcılara görünür olmaya başlayın.",
+
+    "istatistikler": {
+      "gelenRfq": "Gelen RFQ (30 gün)",
+      "profilGoruntulenme": "Profil Görüntüleme",
+      "aktifMesaj": "Aktif Mesaj",
+      "kayitliTezgah": "Kayıtlı Tezgah"
+    },
+
+    "hizliAksiyonlar": {
+      "baslik": "Hızlı Aksiyonlar",
+      "tezgahEkle": "Tezgah Ekle",
+      "sertifikaYukle": "Sertifika Yükle",
+      "galeriYonet": "Galeri Yönet",
+      "kapasiteGuncelle": "Kapasiteyi Güncelle"
+    },
+
+    "profil": {
+      "tamamlamaBaslik": "Profiliniz tamamlanmayı bekliyor",
+      "tamamlamaAciklama": "Kayıt tamamlandı. Tezgah bilgileri, sertifikalar ve görseller eklenince profiliniz alıcılara görünür olacak.",
+      "dolulukOrani": "Profil Doluluk Oranı",
+      "onayBekliyor": "Onay Bekliyor"
+    },
+
+    "abonelik": {
+      "baslik": "Mevcut Plan",
+      "ucretsiz": "Ücretsiz",
+      "aktif": "Aktif",
+      "aylikRfq": "Aylık RFQ",
+      "tezgahListesi": "Tezgah Listesi",
+      "yukselBtn": "Plana Yükselt (Faz 2)"
+    },
+
+    "rfq": {
+      "baslik": "Son RFQ Talepleri",
+      "bos": "Henüz gelen RFQ yok",
+      "bosAciklama": "Profiliniz onaylandıktan sonra Avrupa, ABD ve Asya'daki alıcılardan RFQ alabilirsiniz."
+    },
+
+    "tezgah": {
+      "baslik": "Tezgah Parkım — Aktif Listeler",
+      "bos": "Henüz tezgah eklenmedi",
+      "bosAciklama": "Faz 2'de tezgah ekleme özelliği aktif olacak."
+    },
+
+    "nav": {
+      "dashboard": "Dashboard",
+      "firmaProfili": "Firma Profili",
+      "tezgahParkim": "Tezgah Parkım",
+      "mesajlar": "Mesajlar",
+      "gelenRfq": "Gelen RFQ",
+      "degerlendirmeler": "Değerlendirmeler",
+      "abonelik": "Abonelik",
+      "odemeler": "Ödemeler",
+      "ayarlar": "Ayarlar",
+      "yardim": "Yardım & Destek",
+      "firmaYoneticisi": "Firma Yöneticisi",
+      "ucretsizPlan": "Ücretsiz Plan"
+    }
+  },
+
+  "aliciPanel": {
+    "baslik": "Alıcı Paneli",
+    "hosgeldin": "Hoş geldiniz! 👋",
+    "hosgeldinAlt": "Türkiye'nin en iyi CNC fasoncu firmalarını keşfedin ve teklif alın.",
+
+    "istatistikler": {
+      "gonderilenRfq": "Gönderilen RFQ",
+      "aktifTeklif": "Aktif Teklif",
+      "aktifMesaj": "Aktif Mesaj",
+      "favoriFabrika": "Favori Fabrika"
+    },
+
+    "bilgi": {
+      "baslik": "Platform Faz 2'de tam açılıyor",
+      "aciklama": "Kayıt tamamlandı. Faz 2'de fabrika arama, RFQ gönderme ve teklif yönetimi aktif olacak. Sizi bilgilendireceğiz."
+    },
+
+    "rfq": {
+      "baslik": "Son RFQ Taleplerim",
+      "bos": "Henüz RFQ gönderilmedi",
+      "bosAciklama": "Faz 2'de Türkiye'deki CNC fasoncu firmalarına RFQ gönderebilirsiniz."
+    },
+
+    "fabrikaAra": {
+      "baslik": "Tedarikçi Ara",
+      "aciklama": "Binlerce CNC fasoncu arasından seçin",
+      "dogrulanmis": "Doğrulanmış Firma",
+      "sertifikali": "Sertifikalı",
+      "araBtn": "Fabrika Ara (Faz 2)"
+    },
+
+    "hizliAksiyonlar": {
+      "baslik": "Hızlı Aksiyonlar",
+      "rfqGonder": "RFQ Gönder",
+      "fabrikaAra": "Fabrika Ara",
+      "tekliflerimGor": "Tekliflerimi Gör",
+      "favorilerim": "Favorilerim"
+    },
+
+    "sonIncelenenler": {
+      "baslik": "Son İncelenen Fabrikalar",
+      "bos": "Henüz fabrika incelenmedi",
+      "bosAciklama": "Faz 2'de fabrika arama ve inceleme özelliği aktif olacak."
+    },
+
+    "nav": {
+      "dashboard": "Dashboard",
+      "fabrikaAra": "Fabrika Ara",
+      "favorilerim": "Favorilerim",
+      "rfqGonder": "RFQ Gönder",
+      "tekliflerim": "Tekliflerim",
+      "mesajlar": "Mesajlar",
+      "ayarlar": "Ayarlar",
+      "yardim": "Yardım & Destek",
+      "alici": "Alıcı",
+      "ucretsizUye": "Ücretsiz Üye"
+    }
+  },
+
+  "hatalar": {
+    "zorunluAlan": "Bu alan zorunludur",
+    "gecersizEmail": "Geçerli bir e-posta girin",
+    "sifreMinUzunluk": "Şifre en az 8 karakter olmalı",
+    "sifreEslesmiyor": "Şifreler eşleşmiyor",
+    "genel": "Bir hata oluştu. Lütfen tekrar deneyin.",
+    "emailKayitli": "Bu e-posta adresi zaten kayıtlı. Giriş yapmayı deneyin.",
+    "kayitHatasi": "Kayıt sırasında hata oluştu.",
+    "dbHatasi": "Firma kaydı oluşturulamadı. Lütfen bizimle iletişime geçin: murat@rentcncmachine.com"
+  }
+}

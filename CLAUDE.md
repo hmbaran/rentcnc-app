@@ -133,8 +133,8 @@ Faz 1'de doğrudan dokunacağımız tablolar:
 
 | Tablo | Amaç |
 |-------|------|
-| `kullanici` | Tüm kullanıcılar (Supabase Auth ile bağlı, `auth.users.id` referansı). `rol` ENUM = `'firma_sahibi' / 'firma_admin' / 'firma_kullanici' / 'admin'` |
-| `firma` | Fasoncu firma. Kayıt sırasında oluşturulur. `durum` ENUM = `'taslak' / 'inceleme' / 'aktif' / 'askida' / 'pasif'` — yeni kayıt `'taslak'` ile başlar |
+| `kullanici` | Tüm kullanıcılar (Supabase Auth ile bağlı, `auth.users.id` referansı). `rol` ENUM = `'admin' / 'moderator' / 'firma_admin' / 'firma_user'` |
+| `firma` | Fasoncu firma. Kayıt sırasında oluşturulur. `durum` ENUM = `'taslak' / 'onay_bekliyor' / 'yayinda' / 'pasif' / 'reddedildi' / 'askiya_alindi'` — yeni kayıt `'taslak'` ile başlar |
 | `alici` | Alıcı (buyer). Firmadan bağımsız tablo |
 | `sifre_sifirla_token` | Şifre sıfırlama tokenleri |
 | `email_dogrulama_token` | E-posta doğrulama (Supabase Auth zaten yapıyor, çoğu durumda gerek olmayabilir) |
