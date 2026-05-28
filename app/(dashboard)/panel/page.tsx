@@ -5,12 +5,13 @@ const STATS = [
   { lbl: "Kayıtlı Tezgah", icon: "▦", val: "0", delta: "Profili tamamlayın", renk: "text-[#8B97A4]" },
 ];
 
-const HIZLI = [
-  { icon: "+", label: "Tezgah Ekle" },
+const HIZLI_YAKIN = [
   { icon: "📄", label: "Sertifika Yükle" },
   { icon: "📷", label: "Galeri Yönet" },
   { icon: "⇵", label: "Kapasiteyi Güncelle" },
 ];
+
+import Link from "next/link";
 
 export default function PanelPage() {
   return (
@@ -103,7 +104,14 @@ export default function PanelPage() {
               <span className="text-[11px] font-semibold text-[#003057] tracking-[1.5px] uppercase">Hızlı Aksiyonlar</span>
             </div>
             <div className="grid grid-cols-2 gap-2 p-[14px]">
-              {HIZLI.map((a) => (
+              <Link
+                href="/panel/tezgah-ekle"
+                className="p-[14px_12px] bg-white border border-[#003057] rounded-[2px] text-center no-underline hover:bg-[#F0F7FF] transition-colors"
+              >
+                <div className="text-[18px] mb-[6px] text-[#003057]">+</div>
+                <div className="text-[10.5px] tracking-[0.5px] text-[#003057] font-semibold uppercase leading-[1.3]">Tezgah Ekle</div>
+              </Link>
+              {HIZLI_YAKIN.map((a) => (
                 <div
                   key={a.label}
                   className="p-[14px_12px] bg-white border border-[#D4D8DC] rounded-[2px] text-center opacity-50 cursor-not-allowed select-none"
