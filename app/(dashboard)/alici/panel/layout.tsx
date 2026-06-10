@@ -2,32 +2,29 @@ import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
+import { supabaseAdmin } from "@/lib/supabase/admin";
 import { cikisYap } from "@/lib/actions/auth";
 
 export const metadata: Metadata = { title: "Alıcı Paneli" };
 
-const NAV_ANA = [
-  { icon: "⊕", label: "Fabrika Ara" },
-  { icon: "♡", label: "Favorilerim" },
-];
-
-const NAV_RFQ = [
-  { icon: "▸", label: "RFQ Gönder" },
-  { icon: "◈", label: "Tekliflerim" },
-  { icon: "✉", label: "Mesajlar" },
-];
-
-const NAV_HESAP = [
-  { icon: "⚙", label: "Ayarlar" },
-  { icon: "?", label: "Yardım & Destek" },
-];
+function NavLink({ href, icon, label }: { href: string; icon: string; label: string }) {
+  return (
+    <Link
+      href={href}
+      className="flex items-center gap-[10px] px-[18px] py-[9px] text-[12px] text-white/70 tracking-[0.3px] no-underline hover:text-white hover:bg-white/5 transition-colors"
+    >
+      <span className="w-[14px] flex-shrink-0">{icon}</span>
+      {label}
+    </Link>
+  );
+}
 
 function YakindaItem({ icon, label }: { icon: string; label: string }) {
   return (
-    <span className="flex items-center gap-[10px] px-[18px] py-[9px] text-[12px] text-white/35 tracking-[0.3px] cursor-not-allowed select-none">
-      <span className="w-[14px] flex-shrink-0 opacity-70">{icon}</span>
+    <span className="flex items-center gap-[10px] px-[18px] py-[9px] text-[12px] text-white/30 tracking-[0.3px] cursor-not-allowed select-none">
+      <span className="w-[14px] flex-shrink-0 opacity-50">{icon}</span>
       {label}
-      <span className="ml-auto text-[8px] bg-white/10 text-white/35 px-[5px] py-[1px] rounded-[2px] tracking-[0.5px] whitespace-nowrap">Faz 2</span>
+      <span className="ml-auto text-[8px] bg-white/10 text-white/30 px-[5px] py-[1px] rounded-[2px] tracking-[0.5px] whitespace-nowrap">Yakında</span>
     </span>
   );
 }
@@ -37,14 +34,21 @@ export default async function AliciPanelLayout({ children }: { children: React.R
   const { data: { user } } = await supabase.auth.getUser();
 
   if (!user) redirect("/giris");
-
   const tip = user.user_metadata?.tip as string | undefined;
   if (tip !== "alici") redirect("/panel");
 
+  // Alıcı bilgilerini çek
+  const { data: alici } = await supabaseAdmin
+    .from("alici")
+    .select("ad, soyad, firma_adi")
+    .eq("email", user.email!)
+    .single();
+
+  const adSoyad = alici ? `${alici.ad} ${alici.soyad}` : user.email ?? "";
   const email = user.email ?? "";
-  const localPart = email.split("@")[0];
-  const segments = localPart.split(/[._-]/);
-  const initials = ((segments[0]?.[0] ?? "") + (segments[1]?.[0] ?? segments[0]?.[1] ?? "")).toUpperCase() || "??";
+  const initials = alici
+    ? ((alici.ad?.[0] ?? "") + (alici.soyad?.[0] ?? "")).toUpperCase()
+    : email.slice(0, 2).toUpperCase();
 
   return (
     <div className="flex min-h-screen bg-[#F4F6F8]">
@@ -60,10 +64,15 @@ export default async function AliciPanelLayout({ children }: { children: React.R
           <div className="text-[9px] tracking-[1.5px] text-white/40 mt-[3px] uppercase">Alıcı Paneli</div>
         </div>
 
-        {/* Alıcı */}
+        {/* Kullanıcı özeti */}
         <div className="px-[18px] py-[14px] bg-black/[0.18] border-b border-white/[0.08] flex-shrink-0">
-          <div className="text-[12px] text-white font-medium tracking-[0.3px] leading-[1.3] truncate">—</div>
-          <div className="text-[9px] text-[#7ABFFF] tracking-[1.5px] mt-1 uppercase flex items-center gap-[5px]">
+          <div className="text-[12px] text-white font-medium tracking-[0.3px] leading-[1.3] truncate">
+            {adSoyad}
+          </div>
+          {alici?.firma_adi && (
+            <div className="text-[10px] text-white/50 mt-0.5 truncate">{alici.firma_adi}</div>
+          )}
+          <div className="text-[9px] text-[#7ABFFF] tracking-[1.5px] mt-1.5 uppercase flex items-center gap-[5px]">
             <span className="w-[6px] h-[6px] rounded-full bg-[#1A7A4A] flex-shrink-0" />
             Ücretsiz Üye
           </div>
@@ -78,13 +87,17 @@ export default async function AliciPanelLayout({ children }: { children: React.R
           >
             <span className="w-[14px] flex-shrink-0">▤</span> Dashboard
           </Link>
-          {NAV_ANA.map((item) => <YakindaItem key={item.label} {...item} />)}
+          <NavLink href="/ara"   icon="⊕" label="Fabrika Ara" />
+          <YakindaItem icon="♡" label="Favorilerim" />
 
           <p className="px-[18px] pt-[14px] pb-[6px] text-[9px] tracking-[2px] text-white/30 uppercase font-semibold">RFQ & Teklifler</p>
-          {NAV_RFQ.map((item) => <YakindaItem key={item.label} {...item} />)}
+          <NavLink href="/rfq"  icon="▸" label="RFQ Gönder" />
+          <YakindaItem icon="◈" label="Tekliflerim" />
+          <YakindaItem icon="✉" label="Mesajlar" />
 
           <p className="px-[18px] pt-[14px] pb-[6px] text-[9px] tracking-[2px] text-white/30 uppercase font-semibold">Hesap</p>
-          {NAV_HESAP.map((item) => <YakindaItem key={item.label} {...item} />)}
+          <YakindaItem icon="⚙" label="Ayarlar" />
+          <YakindaItem icon="?" label="Yardım & Destek" />
         </nav>
 
         {/* Kullanıcı + Çıkış */}
@@ -99,10 +112,8 @@ export default async function AliciPanelLayout({ children }: { children: React.R
             </div>
           </div>
           <form action={cikisYap}>
-            <button
-              type="submit"
-              className="text-[10.5px] text-white/50 hover:text-white/80 tracking-[0.5px] transition-colors duration-150 cursor-pointer bg-transparent border-none p-0"
-            >
+            <button type="submit"
+              className="text-[10.5px] text-white/50 hover:text-white/80 tracking-[0.5px] transition-colors duration-150 cursor-pointer bg-transparent border-none p-0">
               Çıkış Yap →
             </button>
           </form>
@@ -111,21 +122,14 @@ export default async function AliciPanelLayout({ children }: { children: React.R
 
       {/* Ana alan */}
       <div className="flex-1 flex flex-col min-w-0">
-        {/* Topbar */}
         <header className="bg-white border-b border-[#D4D8DC] px-6 h-[54px] flex items-center justify-between flex-shrink-0 sticky top-0 z-10">
           <div className="text-[14px] font-medium text-[#003057] tracking-[0.2px]">Dashboard</div>
-          <div className="flex items-center gap-[10px]">
-            <button
-              type="button"
-              className="w-[34px] h-[34px] border border-[#D4D8DC] rounded-[2px] bg-white flex items-center justify-center text-[#5B6770] hover:bg-[#F4F6F8] hover:text-[#003057] transition-colors duration-150"
-              title="Bildirimler"
-            >
-              🔔
-            </button>
-          </div>
+          <Link href="/rfq"
+            className="px-4 py-2 text-[10px] font-semibold tracking-[1px] uppercase text-white rounded-[2px] hover:opacity-90 transition-opacity"
+            style={{ background: "#003057" }}>
+            + RFQ Gönder
+          </Link>
         </header>
-
-        {/* İçerik */}
         <div className="flex-1 p-[22px_24px] overflow-y-auto">
           {children}
         </div>

@@ -10,9 +10,8 @@ const NAV_ANA_YAKINДА = [
   { icon: "◉", label: "Firma Profili" },
 ];
 
-const NAV_ILETISIM = [
+const NAV_ILETISIM_YAKINDA = [
   { icon: "✉", label: "Mesajlar" },
-  { icon: "▸", label: "Gelen RFQ" },
   { icon: "★", label: "Değerlendirmeler" },
 ];
 
@@ -77,15 +76,39 @@ export default async function PanelLayout({ children }: { children: React.ReactN
             <span className="w-[14px] flex-shrink-0">▤</span> Dashboard
           </Link>
           <Link
-            href="/panel/tezgah-ekle"
+            href="/panel/tezgahlar"
             className="flex items-center gap-[10px] px-[18px] py-[9px] text-[12px] text-white/70 hover:text-white hover:bg-white/[0.06] tracking-[0.3px] no-underline transition-colors"
           >
             <span className="w-[14px] flex-shrink-0">▦</span> Tezgah Parkım
           </Link>
+          <Link
+            href="/panel/tezgah-ekle"
+            className="flex items-center gap-[10px] px-[18px] py-[9px] text-[12px] text-white/70 hover:text-white hover:bg-white/[0.06] tracking-[0.3px] no-underline transition-colors"
+          >
+            <span className="w-[14px] flex-shrink-0">+</span> Tezgah Ekle
+          </Link>
+          <Link
+            href="/panel/profil"
+            className="flex items-center gap-[10px] px-[18px] py-[9px] text-[12px] text-white/70 hover:text-white hover:bg-white/[0.06] tracking-[0.3px] no-underline transition-colors"
+          >
+            <span className="w-[14px] flex-shrink-0">◉</span> Firma Profili
+          </Link>
+          <Link
+            href="/panel/referans-parcalar"
+            className="flex items-center gap-[10px] px-[18px] py-[9px] text-[12px] text-white/70 hover:text-white hover:bg-white/[0.06] tracking-[0.3px] no-underline transition-colors"
+          >
+            <span className="w-[14px] flex-shrink-0">⚙</span> Referans Parçalar
+          </Link>
           {NAV_ANA_YAKINДА.map((item) => <YakindaItem key={item.label} {...item} />)}
 
           <p className="px-[18px] pt-[14px] pb-[6px] text-[9px] tracking-[2px] text-white/30 uppercase font-semibold">İletişim</p>
-          {NAV_ILETISIM.map((item) => <YakindaItem key={item.label} {...item} />)}
+          <Link
+            href="/panel/rfq"
+            className="flex items-center gap-[10px] px-[18px] py-[9px] text-[12px] text-white/70 hover:text-white hover:bg-white/[0.06] tracking-[0.3px] no-underline transition-colors"
+          >
+            <span className="w-[14px] flex-shrink-0">▸</span> Gelen RFQ <span className="text-white/35 text-[10px] ml-1">(Teklif İstekleri)</span>
+          </Link>
+          {NAV_ILETISIM_YAKINDA.map((item) => <YakindaItem key={item.label} {...item} />)}
 
           <p className="px-[18px] pt-[14px] pb-[6px] text-[9px] tracking-[2px] text-white/30 uppercase font-semibold">Hesap</p>
           {NAV_HESAP.map((item) => <YakindaItem key={item.label} {...item} />)}

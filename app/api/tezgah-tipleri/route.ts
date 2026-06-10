@@ -1,17 +1,19 @@
 import { NextResponse } from "next/server";
-import { db } from "@/lib/db";
-import { tezgahTip } from "@/lib/db/schema";
-import { eq, asc } from "drizzle-orm";
+import { supabaseAdmin } from "@/lib/supabase/admin";
 
 export async function GET() {
-  try {
-    const tipler = await db
-      .select({ tipId: tezgahTip.tipId, kod: tezgahTip.kod, ad: tezgahTip.ad })
-      .from(tezgahTip)
-      .where(eq(tezgahTip.aktif, true))
-      .orderBy(asc(tezgahTip.sira));
-    return NextResponse.json(tipler);
-  } catch {
-    return NextResponse.json({ hata: "Tezgah tipleri alınamadı." }, { status: 500 });
+  const { data, error } = await supabaseAdmin
+    .from("tezgah_tip")
+    .select("tip_id, kod, ad")
+    .eq("aktif", true)
+    .order("sira", { ascending: true });
+
+  if (error) {
+    console.error("tezgah-tipleri hatası:", error);
+    return NextResponse.json({ hata: error.message }, { status: 500 });
   }
+
+  return NextResponse.json(
+    data.map((r) => ({ tipId: r.tip_id, kod: r.kod, ad: r.ad }))
+  );
 }

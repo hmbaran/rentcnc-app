@@ -17,18 +17,23 @@ export const fasoncuAdim1Schema = z
       .regex(/^\d+$/, "Sadece rakam girin"),
     ticariUnvan: z.string().min(2, "Ticari ünvan gerekli"),
     il: z.string().min(1, "İl seçin"),
-    ilce: z.string().min(2, "İlçe girin"),
-    adres: z.string().min(10, "Tam adres girin"),
+    ilce: z.string().min(1, "İlçe seçin"),
     // İletişim
     yetkiliKisi: z.string().min(2, "Yetkili kişi adı gerekli"),
     telefon: z.string().min(10, "Geçerli telefon numarası girin"),
     email: z.string().email("Geçerli bir e-posta girin"),
-    sifre: z.string().min(8, "Şifre en az 8 karakter olmalı"),
+    sifre: z
+      .string()
+      .min(8, "Şifre en az 8 karakter olmalı")
+      .regex(/[a-zA-ZğüşıöçĞÜŞİÖÇ]/, "Şifre en az bir harf içermeli")
+      .regex(/[0-9]/, "Şifre en az bir rakam içermeli"),
     sifreTekrar: z.string().min(1, "Şifre tekrarı gerekli"),
+    // Panelden tamamlanacak — opsiyonel
+    adres: z.string().optional(),
     website: z.string().optional(),
-    kurulisYili: z.string().min(1, "Kuruluş yılı seçin"),
-    calisanAralik: z.string().min(1, "Çalışan sayısı seçin"),
-    kisaTanitim: z.string().max(300, "Maks. 300 karakter").optional(),
+    kurulisYili: z.string().optional(),
+    calisanAralik: z.string().optional(),
+    kisaTanitim: z.string().max(300).optional(),
   })
   .refine((d) => d.sifre === d.sifreTekrar, {
     message: "Şifreler eşleşmiyor",

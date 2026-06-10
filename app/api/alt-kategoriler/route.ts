@@ -1,33 +1,32 @@
 import { NextRequest, NextResponse } from "next/server";
-import { db } from "@/lib/db";
-import { tezgahAltKategori, tezgahTip } from "@/lib/db/schema";
-import { eq, asc } from "drizzle-orm";
+import { supabaseAdmin } from "@/lib/supabase/admin";
 
 export async function GET(req: NextRequest) {
   const tipKod = req.nextUrl.searchParams.get("tipKod");
   if (!tipKod) return NextResponse.json([]);
 
-  try {
-    const [tip] = await db
-      .select({ tipId: tezgahTip.tipId })
-      .from(tezgahTip)
-      .where(eq(tezgahTip.kod, tipKod))
-      .limit(1);
+  // Önce tip_id'yi kod'dan bul
+  const { data: tipData } = await supabaseAdmin
+    .from("tezgah_tip")
+    .select("tip_id")
+    .eq("kod", tipKod)
+    .single();
 
-    if (!tip) return NextResponse.json([]);
+  if (!tipData) return NextResponse.json([]);
 
-    const altKategoriler = await db
-      .select({
-        altKategoriId: tezgahAltKategori.altKategoriId,
-        kod: tezgahAltKategori.kod,
-        ad: tezgahAltKategori.ad,
-      })
-      .from(tezgahAltKategori)
-      .where(eq(tezgahAltKategori.tipId, tip.tipId))
-      .orderBy(asc(tezgahAltKategori.sira));
+  const { data, error } = await supabaseAdmin
+    .from("tezgah_alt_kategori")
+    .select("alt_kategori_id, kod, ad")
+    .eq("tip_id", tipData.tip_id)
+    .eq("aktif", true)
+    .order("sira", { ascending: true });
 
-    return NextResponse.json(altKategoriler);
-  } catch {
-    return NextResponse.json({ hata: "Alt kategoriler alınamadı." }, { status: 500 });
+  if (error) {
+    console.error("alt-kategoriler hatası:", error);
+    return NextResponse.json({ hata: error.message }, { status: 500 });
   }
+
+  return NextResponse.json(
+    data.map((r) => ({ altKategoriId: r.alt_kategori_id, kod: r.kod, ad: r.ad }))
+  );
 }

@@ -1,35 +1,42 @@
 import { NextRequest, NextResponse } from "next/server";
-import { db } from "@/lib/db";
-import { tezgahMarka, tezgahMarkaTip, tezgahTip } from "@/lib/db/schema";
-import { and, eq, asc } from "drizzle-orm";
+import { supabaseAdmin } from "@/lib/supabase/admin";
 
 export async function GET(req: NextRequest) {
   const tipKod = req.nextUrl.searchParams.get("tipKod");
   if (!tipKod) return NextResponse.json([]);
 
-  try {
-    const [tip] = await db
-      .select({ tipId: tezgahTip.tipId })
-      .from(tezgahTip)
-      .where(eq(tezgahTip.kod, tipKod))
-      .limit(1);
+  // tip_id'yi bul
+  const { data: tipData } = await supabaseAdmin
+    .from("tezgah_tip")
+    .select("tip_id")
+    .eq("kod", tipKod)
+    .single();
 
-    if (!tip) return NextResponse.json([]);
+  if (!tipData) return NextResponse.json([]);
 
-    const markalar = await db
-      .select({ markaId: tezgahMarka.markaId, ad: tezgahMarka.ad })
-      .from(tezgahMarka)
-      .innerJoin(tezgahMarkaTip, eq(tezgahMarkaTip.markaId, tezgahMarka.markaId))
-      .where(
-        and(
-          eq(tezgahMarkaTip.tipId, tip.tipId),
-          eq(tezgahMarka.aktif, true),
-        ),
-      )
-      .orderBy(asc(tezgahMarka.ad));
+  // Bu tipe ait marka_id listesini al
+  const { data: markaTipData } = await supabaseAdmin
+    .from("tezgah_marka_tip")
+    .select("marka_id")
+    .eq("tip_id", tipData.tip_id);
 
-    return NextResponse.json(markalar);
-  } catch {
-    return NextResponse.json({ hata: "Markalar alınamadı." }, { status: 500 });
+  const markaIds = (markaTipData ?? []).map((r) => r.marka_id);
+  if (markaIds.length === 0) return NextResponse.json([]);
+
+  // Markaları getir (ulke dahil — dropdown gruplandırması için)
+  const { data, error } = await supabaseAdmin
+    .from("tezgah_marka")
+    .select("marka_id, ad, ulke")
+    .in("marka_id", markaIds)
+    .eq("aktif", true)
+    .order("ad", { ascending: true });
+
+  if (error) {
+    console.error("markalar hatası:", error);
+    return NextResponse.json({ hata: error.message }, { status: 500 });
   }
+
+  return NextResponse.json(
+    data.map((r) => ({ markaId: r.marka_id, ad: r.ad, ulke: r.ulke ?? "" }))
+  );
 }

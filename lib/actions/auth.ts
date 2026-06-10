@@ -2,8 +2,10 @@
 
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
+import { supabaseAdmin } from "@/lib/supabase/admin";
 import { db } from "@/lib/db/index";
-import { firma, kullanici, alici } from "@/lib/db/schema";
+import { alici } from "@/lib/db/schema";
+import { yeniFirmaAdminBildirimi } from "@/lib/email";
 
 type GirisInput = {
   email: string;
@@ -69,49 +71,79 @@ export async function fasoncuKayitYap(
   });
 
   if (authError) {
-    if (authError.message.toLowerCase().includes("already registered")) {
+    const msg = authError.message.toLowerCase();
+    if (msg.includes("already registered") || msg.includes("user already registered")) {
       return { hata: "Bu e-posta adresi zaten kayıtlı. Giriş yapmayı deneyin." };
     }
+    if (msg.includes("rate limit")) {
+      return { hata: "⏳ Çok kısa sürede çok fazla deneme yapıldı. 2–3 dakika bekleyip tekrar deneyin — bilgileriniz kaybolmadı." };
+    }
+    console.error("Supabase signUp hatası:", authError);
     return { hata: "Kayıt sırasında hata oluştu: " + authError.message };
   }
 
+  // Supabase onaylanmamış e-posta varsa bazen user:null döner (email enumeration koruması)
   if (!authData.user) {
-    return { hata: "Kullanıcı oluşturulamadı. Lütfen tekrar deneyin." };
+    console.error("Supabase signUp: user null döndü, authData:", JSON.stringify(authData));
+    return {
+      hata: "Bu e-posta ile daha önce kayıt başlatılmış olabilir. E-posta kutunuzu kontrol edin veya farklı bir e-posta deneyin.",
+    };
   }
 
-  // 2. DB kayıtlarını oluştur (postgres superuser — RLS bypass)
+  // 2. DB kayıtlarını oluştur (supabaseAdmin — RLS bypass)
   try {
     const kurulusYiliParsed =
       input.kurulisYili && input.kurulisYili !== "Daha önce"
         ? parseInt(input.kurulisYili)
         : null;
 
-    const [yeniFirma] = await db
-      .insert(firma)
-      .values({
-        vergiNo: input.vkn,
-        ticariUnvan: input.ticariUnvan,
+    const { data: yeniFirma, error: firmaHata } = await supabaseAdmin
+      .from("firma")
+      .insert({
+        vergi_no: input.vkn,
+        ticari_unvan: input.ticariUnvan,
         il: input.il || null,
         ilce: input.ilce || null,
         adres: input.adres || null,
-        telefon: input.telefon || null,
+        telefon_gsm: input.telefon || null,   // kayıt telefonu = cep
         email: input.email,
         website: input.website || null,
-        kurulusYili: kurulusYiliParsed,
-        calisanAralik: input.calisanAralik || null,
+        kurulus_yili: kurulusYiliParsed,
+        calisan_aralik: input.calisanAralik || null,
         hakkinda: input.kisaTanitim || null,
         durum: "taslak",
       })
-      .returning({ firmaId: firma.firmaId });
+      .select("firma_id")
+      .single();
 
-    await db.insert(kullanici).values({
-      firmaId: yeniFirma.firmaId,
-      adSoyad: input.yetkiliKisi,
-      email: input.email,
-      rol: "firma_admin",
-      telefon: input.telefon || null,
-      dilTercihi: "tr",
-    });
+    if (firmaHata || !yeniFirma) {
+      console.error("Firma insert hatası:", firmaHata);
+      throw firmaHata;
+    }
+
+    const { error: kullaniciHata } = await supabaseAdmin
+      .from("kullanici")
+      .insert({
+        firma_id: yeniFirma.firma_id,
+        ad_soyad: input.yetkiliKisi,
+        email: input.email,
+        rol: "firma_admin",
+        telefon: input.telefon || null,
+        dil_tercihi: "tr",
+      });
+
+    if (kullaniciHata) {
+      console.error("Kullanici insert hatası:", kullaniciHata);
+      throw kullaniciHata;
+    }
+    // Admin'e bildirim gönder (hızlı onay butonları ile)
+    await yeniFirmaAdminBildirimi({
+      firmaId:    yeniFirma.firma_id,
+      firmaAdi:   input.ticariUnvan,
+      firmaEmail: input.email,
+      il:         input.il || undefined,
+      vergiNo:    input.vkn || undefined,
+    }).catch(() => {});
   } catch (dbHata) {
     console.error("DB kayıt hatası:", dbHata);
     return {

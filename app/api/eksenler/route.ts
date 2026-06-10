@@ -1,21 +1,23 @@
 import { NextRequest, NextResponse } from "next/server";
-import { db } from "@/lib/db";
-import { tezgahEksenSecenek } from "@/lib/db/schema";
-import { eq, asc } from "drizzle-orm";
+import { supabaseAdmin } from "@/lib/supabase/admin";
 
 export async function GET(req: NextRequest) {
-  const altKategoriId = parseInt(req.nextUrl.searchParams.get("altKategoriId") ?? "0");
+  const altKategoriId = req.nextUrl.searchParams.get("altKategoriId");
   if (!altKategoriId) return NextResponse.json([]);
 
-  try {
-    const eksenler = await db
-      .select({ eksenId: tezgahEksenSecenek.eksenId, ad: tezgahEksenSecenek.ad })
-      .from(tezgahEksenSecenek)
-      .where(eq(tezgahEksenSecenek.altKategoriId, altKategoriId))
-      .orderBy(asc(tezgahEksenSecenek.sira));
+  const { data, error } = await supabaseAdmin
+    .from("tezgah_eksen_secenek")
+    .select("eksen_id, ad")
+    .eq("alt_kategori_id", parseInt(altKategoriId))
+    .eq("aktif", true)
+    .order("sira", { ascending: true });
 
-    return NextResponse.json(eksenler);
-  } catch {
-    return NextResponse.json({ hata: "Eksen seçenekleri alınamadı." }, { status: 500 });
+  if (error) {
+    console.error("eksenler hatası:", error);
+    return NextResponse.json({ hata: error.message }, { status: 500 });
   }
+
+  return NextResponse.json(
+    data.map((r) => ({ eksenId: r.eksen_id, ad: r.ad }))
+  );
 }

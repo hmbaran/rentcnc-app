@@ -161,6 +161,9 @@ export const tezgahMarkaTip = pgTable('tezgah_marka_tip', {
   uniqMarkaTip: unique().on(t.markaId, t.tipId),
 }));
 
+// tezgahModel — geçici olarak devre dışı (sorun tespiti için)
+// export const tezgahModel = pgTable('tezgah_model', { ... });
+
 export const kontrolSistemi = pgTable('kontrol_sistemi', {
   kontrolSistemiId: serial('kontrol_sistemi_id').primaryKey(),
   ad: varchar('ad', { length: 80 }).notNull().unique(),

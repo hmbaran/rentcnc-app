@@ -143,6 +143,36 @@ export const tezgahHiyerarsisi: Record<string, TezgahTipVeri> = {
     },
     markalar: ["Brother", "Fanuc Robodrill", "Yasda", "Makino", "UNISIG", "TBT", "Diğer / Manuel Giriş"],
   },
+  takim_bileme: {
+    label: "Takım Bileme Tezgahları",
+    alts: {
+      universal_takim: { label: "Universal Takım Bileme", eksenler: ["5-Eksen CNC", "6-Eksen CNC"] },
+      kalem_bileme: { label: "Parmak Freze / Matkap Bileme", eksenler: ["5-Eksen CNC", "6-Eksen CNC"] },
+      testere_bileme: { label: "Testere Bileme", eksenler: ["CNC Otomatik", "Manuel"] },
+      elmas_bileme: { label: "PCD / CBN Takım Bileme", eksenler: ["5-Eksen CNC"] },
+      honlama_tas: { label: "Honlama Taşı Bileme", eksenler: ["CNC"] },
+    },
+    markalar: ["Walter", "Rollomatic", "Anca", "Schneeberger", "Ewag", "Vollmer", "Saacke", "Schütte", "Numroto (yazılım)", "Diğer / Manuel Giriş"],
+  },
+  honlama: {
+    label: "Honlama Tezgahları",
+    alts: {
+      hon_uzun: { label: "Uzun Stroklu Honlama", eksenler: ["Tek Milli", "Çok Milli"] },
+      hon_kisa: { label: "Kısa Stroklu Honlama (Superfinish)", eksenler: ["Tek Milli", "Çok Milli"] },
+      hon_dis: { label: "Dış Yüzey Honlama", eksenler: ["Manuel", "CNC"] },
+    },
+    markalar: ["Sunnen", "Gehring", "Kadia", "Nagel", "Delapena", "Engis", "Diğer / Manuel Giriş"],
+  },
+  olcum_cmm: {
+    label: "Ölçüm / CMM Tezgahları",
+    alts: {
+      cmm_kopru: { label: "Köprü Tipi CMM", eksenler: ["3-Eksen", "5-Eksen"] },
+      cmm_kol: { label: "Taşınabilir Ölçüm Kolu", eksenler: ["6-Eksen", "7-Eksen"] },
+      optik_olcum: { label: "Optik / Vision Ölçüm", eksenler: ["2D", "3D"] },
+      yuzey_pururzluk: { label: "Yüzey Pürüzlülük Ölçüm", eksenler: ["Manuel Prob", "CNC Otomatik"] },
+    },
+    markalar: ["Zeiss", "Hexagon", "Renishaw", "Mitutoyo", "Wenzel", "LK Metrology", "Nikon Metrology", "Faro", "Diğer / Manuel Giriş"],
+  },
 };
 
 export const TEZGAH_TIP_SECENEKLERI = [
@@ -160,6 +190,9 @@ export const TEZGAH_TIP_SECENEKLERI = [
   { value: "disli", label: "Dişli Tezgahları" },
   { value: "additive", label: "Additive Manufacturing Tezgahları" },
   { value: "tapping", label: "Tapping Centers / Delik Delme-Kılavuz Açma" },
+  { value: "takim_bileme", label: "Takım Bileme Tezgahları" },
+  { value: "honlama", label: "Honlama Tezgahları" },
+  { value: "olcum_cmm", label: "Ölçüm / CMM Tezgahları" },
 ] as const;
 
 export const KONTROL_SISTEMLERI = [

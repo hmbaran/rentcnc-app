@@ -49,8 +49,14 @@ export async function updateSession(request: NextRequest) {
 
   if (authSayfasi && user) {
     const url = request.nextUrl.clone();
-    // Rol bazlı yönlendirme callback'te yapılıyor; burada genel panel'e gönder
-    url.pathname = "/panel";
+    const rol = user.user_metadata?.rol as string | undefined;
+    if (rol === "admin") {
+      url.pathname = "/admin";
+    } else if (rol === "alici") {
+      url.pathname = "/alici/panel";
+    } else {
+      url.pathname = "/panel";
+    }
     return NextResponse.redirect(url);
   }
 
