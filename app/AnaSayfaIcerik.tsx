@@ -113,7 +113,7 @@ const T: Record<Dil, Record<string, string>> = {
     aliciStep3: "Platform üzerinden iletişim — ücretsiz",
     aliciCta: "ÜCRETSİZ ARA",
     surecEyebrow: "SÜREÇ", surecBaslik: "Nasıl çalışır?",
-    katEyebrow: "TEZGAH KATEGORİLERİ", katBaslik: "Tüm CNC kategorileri",
+    katEyebrow: "TEZGAH KATEGORİLERİ", katBaslik: "Tüm CNC kategorileri", katDaha: "ve daha birçok kategori...",
     nedenEyebrow: "NEDEN BİZ", nedenBaslik: "Platform güvencesi",
     ulkeEyebrow: "GLOBAL ERİŞİM", ulkeBaslik: "Alıcı ülkeler",
     ctaEyebrow: "HEMEN BAŞLAYIN", ctaBaslik: "İlk 30 gün tamamen ücretsiz",
@@ -146,7 +146,7 @@ const T: Record<Dil, Record<string, string>> = {
     aliciStep3: "Communicate through platform — free",
     aliciCta: "SEARCH FOR FREE",
     surecEyebrow: "PROCESS", surecBaslik: "How it works",
-    katEyebrow: "MACHINE CATEGORIES", katBaslik: "All CNC categories",
+    katEyebrow: "MACHINE CATEGORIES", katBaslik: "All CNC categories", katDaha: "and many more categories...",
     nedenEyebrow: "WHY US", nedenBaslik: "Platform guarantee",
     ulkeEyebrow: "GLOBAL REACH", ulkeBaslik: "Buyer countries",
     ctaEyebrow: "GET STARTED", ctaBaslik: "First 30 days completely free",
@@ -179,7 +179,7 @@ const T: Record<Dil, Record<string, string>> = {
     aliciStep3: "Über Plattform kommunizieren — kostenlos",
     aliciCta: "KOSTENLOS SUCHEN",
     surecEyebrow: "PROZESS", surecBaslik: "Wie funktioniert es?",
-    katEyebrow: "MASCHINENKATEGORIEN", katBaslik: "Alle CNC-Kategorien",
+    katEyebrow: "MASCHINENKATEGORIEN", katBaslik: "Alle CNC-Kategorien", katDaha: "und viele weitere Kategorien...",
     nedenEyebrow: "WARUM WIR", nedenBaslik: "Plattform-Garantie",
     ulkeEyebrow: "GLOBALE REICHWEITE", ulkeBaslik: "Einkäuferländer",
     ctaEyebrow: "JETZT STARTEN", ctaBaslik: "Erste 30 Tage kostenlos",
@@ -357,13 +357,14 @@ export default function AnaSayfaIcerik({ istatistik }: { istatistik: AnaSayfaIst
       <section className="px-8 py-[52px] border-b border-[#DDE8F0]">
         <div className="text-[10px] tracking-[4px] text-[#0077CC] mb-2">{t.katEyebrow}</div>
         <div className="text-[22px] font-light text-[#1A2535] mb-7">{t.katBaslik}</div>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 items-center">
           {KATEGORILER[dil].map((k) => (
             <Link key={k} href={`/ara?kategori=${encodeURIComponent(k)}`}
               className="px-[18px] py-2 border border-[#C8D8E8] rounded-[2px] text-[12px] text-[#4A5568] tracking-[0.3px] bg-white hover:border-[#00529C] hover:text-[#00529C] hover:bg-[#F0F7FF] transition-all no-underline">
               {k}
             </Link>
           ))}
+          <span className="text-[12px] text-[#8A98A8] italic ml-1">{t.katDaha}</span>
         </div>
       </section>
 
