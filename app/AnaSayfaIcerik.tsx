@@ -131,14 +131,14 @@ const T: Record<Dil, Record<string, string>> = {
     heroAlt: "We match manufacturers with idle CNC capacity to global buyers looking for precision machining.",
     btn1: "LIST MY CAPACITY", btn2: "FIND CNC FACTORY",
     stat1: "Registered Suppliers", stat2: "Active Buyers", stat3: "Registered Machines", stat4: "Countries",
-    fasoncuEyebrow: "CNC SUPPLIER",
+    fasoncuEyebrow: "MANUFACTURER · SUPPLIER",
     fasoncuBaslik: "Turn idle CNC capacity into revenue",
     fasoncuAlt: "While your machines sit idle, buyers in Germany and Italy are looking for you.",
     fasoncuStep1: "Enter machine park and certifications in 15 min",
     fasoncuStep2: "Receive RFQ requests from global buyers",
     fasoncuStep3: "Communicate, agree and win the job",
     fasoncuCta: "TRY FREE FOR 30 DAYS",
-    aliciEyebrow: "BUYER",
+    aliciEyebrow: "BUYER · PROJECT OWNER",
     aliciBaslik: "Access Turkey's best CNC factories",
     aliciAlt: "ISO-certified, 5-axis capable Turkish suppliers — detailed profiles and verified reviews.",
     aliciStep1: "Filter by machine type, material, certification",
@@ -164,14 +164,14 @@ const T: Record<Dil, Record<string, string>> = {
     heroAlt: "Wir verbinden Lohnfertiger mit freier CNC-Kapazität in der Türkei mit globalen Einkäufern.",
     btn1: "KAPAZITÄT LISTEN", btn2: "CNC-FABRIK FINDEN",
     stat1: "Registrierte Lohnfertiger", stat2: "Aktive Einkäufer", stat3: "Registrierte Maschinen", stat4: "Länder",
-    fasoncuEyebrow: "CNC-LOHNFERTIGER",
+    fasoncuEyebrow: "HERSTELLER · LOHNFERTIGER",
     fasoncuBaslik: "Freie CNC-Kapazität in Umsatz verwandeln",
     fasoncuAlt: "Während Ihre Maschinen stillstehen, suchen Einkäufer aus Deutschland nach Ihnen.",
     fasoncuStep1: "Maschinenpark und Zertifikate in 15 Min anlegen",
     fasoncuStep2: "RFQ-Anfragen von globalen Einkäufern erhalten",
     fasoncuStep3: "Kommunizieren, einigen und Auftrag gewinnen",
     fasoncuCta: "30 TAGE KOSTENLOS TESTEN",
-    aliciEyebrow: "EINKÄUFER",
+    aliciEyebrow: "EINKÄUFER · PROJEKTINHABER",
     aliciBaslik: "Zugang zu Türkeis besten CNC-Fabriken",
     aliciAlt: "ISO-zertifizierte, 5-Achs-fähige türkische Lohnfertiger — detaillierte Profile und echte Bewertungen.",
     aliciStep1: "Nach Maschinentyp, Material, Zertifikat filtern",
@@ -239,16 +239,7 @@ export default function AnaSayfaIcerik({ istatistik }: { istatistik: AnaSayfaIst
             <strong className="font-medium text-[#7ABFFF]">{t.heroVurgu}</strong>
           </h1>
           <p className="text-[14px] text-white/70 max-w-[520px] leading-[1.8] mb-[40px]">{t.heroAlt}</p>
-          <div className="flex flex-wrap gap-3 mb-[56px]">
-            <Link href="/kayit/fasoncu"
-              className="px-8 py-[13px] bg-white text-[#003057] rounded-[2px] text-[12px] tracking-[1px] font-medium hover:bg-[#E8F2FA] transition-colors no-underline">
-              {t.btn1}
-            </Link>
-            <Link href="/ara"
-              className="px-8 py-[13px] bg-transparent text-white border border-white/40 rounded-[2px] text-[12px] tracking-[1px] hover:border-white transition-colors no-underline">
-              {t.btn2}
-            </Link>
-          </div>
+          <div className="mb-[56px]" />
         </div>
       </section>
 
